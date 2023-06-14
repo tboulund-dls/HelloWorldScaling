@@ -1,0 +1,20 @@
+services:
+  console:
+    build:
+      context: .
+      dockerfile: "HelloWorldScaling/Dockerfile"
+    depends_on:
+      - greeting-service
+      - planet-service
+  greeting-service:
+    build:
+      context: .
+      dockerfile: "GreetingService/Dockerfile"
+    deploy:
+      replicas: 2
+  planet-service:
+    build:
+      context: .
+      dockerfile: "PlanetService/Dockerfile"
+    deploy:
+      replicas: 2
